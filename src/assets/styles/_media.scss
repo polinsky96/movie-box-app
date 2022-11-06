@@ -1,0 +1,22 @@
+@use './breakpoints-devices' as breakpoints;
+
+@mixin for-size($size) {
+    @if $size == phone-only {
+      @media (max-width:  575px) { @content; }
+    } 
+    @else if $size == tablet-up {
+      @media (min-width: #{breakpoints.$tablet}px) { @content; }
+    } 
+    @else if $size == laptop-up {
+      @media (min-width: #{breakpoints.$laptop}px) { @content; }
+    } 
+    @else if $size == desktop-up {
+      @media (min-width: #{breakpoints.$desktop}px) { @content; }
+    } 
+    @else if $size == large-up {
+      @media (min-width: #{breakpoints.$large}px) { @content; }
+    } 
+    @else if $size == extra-large-up {
+      @media (min-width: #{breakpoints.$extra-large}px) { @content; }
+    }
+}

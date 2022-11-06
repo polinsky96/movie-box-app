@@ -1,0 +1,22 @@
+@mixin accent-border {
+    border: 2px solid #6781F7;
+}
+
+@mixin overflow-text-for-columns ($columns) {
+    display: -webkit-box;
+    -webkit-line-clamp: $columns;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+@mixin card-frame {
+
+    background-color: $main-color;
+    border-radius: $card-border-radius;
+    border: 2px solid #192233;
+}
+
+@mixin card-box-shadow {
+    box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.5);
+}

@@ -1,0 +1,19 @@
+@import '../breakpoints-devices';
+
+// :export {
+//     tablet: breakpoints.$tablet;
+//     laptop: breakpoints.$laptop;
+//     desktop: breakpoints.$desktop;
+//     large: breakpoints.$large;
+//     extra-large: breakpoints.$extra-large;
+// }
+
+// @import '../breakpoints-devices';
+
+:export {
+    tablet: $tablet;
+    laptop: $laptop;
+    desktop: $desktop;
+    large: $large;
+    extraLarge: $extra-large;
+}
