@@ -15,8 +15,7 @@
                     <div class="result-list-item__data">
                         <slot name="release-data" />
     
-                    </div>
-                    
+                    </div>  
                 </div>
                 <p class="result-list-item__overview">
                     <slot name="overview" />

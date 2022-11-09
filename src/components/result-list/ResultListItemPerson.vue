@@ -12,6 +12,8 @@
                 <div class="result-list-item-person__department">
                     {{ details.known_for_department }}
                 </div>
+                <ResultListItemPersonKnowWork 
+                    :known-list="details.known_for"/>
             </div>
         </div>
     </div>
@@ -19,6 +21,7 @@
 
 <script setup>
 import BaseImage from '../base/BaseImage.vue';
+import ResultListItemPersonKnowWork from './ResultListItemPersonKnowWork.vue';
 
 const props = defineProps({
     details: {
@@ -68,6 +71,11 @@ const props = defineProps({
 
     &__name {
         margin-bottom: 0.75rem;
+    }
+
+    &__department {
+        font-weight: bold;
+        margin-bottom: 0.8rem;
     }
 }
 </style>

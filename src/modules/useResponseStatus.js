@@ -1,8 +1,10 @@
 import { ref, computed } from "vue";
-import { useErrorStatusStore } from '../stores/errorStatus';
+import { useErrorStatus } from '../stores/errorStatus';
+import { useLoaderStatus } from '../stores/loaderStatus';
 
 export const useResponseStatus = () => {
-  const store = useErrorStatusStore();
+  const storeError = useErrorStatus();
+  const storeLoader = useLoaderStatus();
 
   const requestStatus = {
     progress: "REQUEST_IN_PROGRESS",
@@ -12,20 +14,21 @@ export const useResponseStatus = () => {
 
   const requestState = ref(null);
 
-  const loading = computed(() => requestState.value === requestStatus.loading);
-  const error = computed(() => requestState.value === requestStatus.error);
+  const loading = computed(() => requestState.value === requestStatus.progress);
+  const error = computed(() => requestState.value == requestStatus.error);
 
   const setResponseStatus = async (callback) => {
     requestState.value = requestStatus.progress;
-
+    storeLoader.setLoading();
+    
     try {
       await callback;
       
       requestState.value = requestStatus.success;
-
+      storeLoader.setSuccess();
     } catch(error) {
       requestState.value = requestStatus.error;
-      store.setError(error.message || error);
+      storeError.setError(error.message || error);
     }
   }
 

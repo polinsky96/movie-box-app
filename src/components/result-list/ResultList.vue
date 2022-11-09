@@ -5,22 +5,34 @@
                 <h3 class="result-list__empty">Not results</h3>
             </div>
             <div v-if="typeContent === 'movie'" class="result-list__items">
-                <ResultListItemMovie 
+                <router-link 
                     v-for="(result, idx) in results"
                     :key="idx"
-                    :details="result"/>
+                    :to="{ name: 'movie', params: { id: result.id }}"
+                    class="result-list__link">
+                    <ResultListItemMovie 
+                        :details="result"/>
+                </router-link>
             </div>
             <div v-if="typeContent === 'tv'" class="result-list__items">
-                <ResultListItemTv 
+                <router-link 
                     v-for="(result, idx) in results"
                     :key="idx"
-                    :details="result"/>
+                    :to="{ name: 'tv', params: { id: result.id }}"
+                    class="result-list__link">
+                    <ResultListItemTv 
+                        :details="result"/>
+                </router-link>
             </div>
             <div v-if="typeContent === 'person'" class="result-list__items">
-                <ResultListItemPerson
+                <router-link 
                     v-for="(result, idx) in results"
                     :key="idx"
-                    :details="result"/>
+                    :to="{ name: 'person', params: { id: result.id }}"
+                    class="result-list__link">
+                    <ResultListItemPerson 
+                        :details="result"/>
+                </router-link>
             </div>
         </div>
     </div>
@@ -68,6 +80,10 @@ const isEmptyResults = computed(() => {
     &__empty {
         padding: 3rem;
         text-align: center;
+    }
+
+    &__link {
+        text-decoration: none;
     }
 }
 </style>

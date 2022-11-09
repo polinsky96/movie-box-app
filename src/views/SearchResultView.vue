@@ -70,10 +70,6 @@ getResultData();
 
 <style lang="scss" scoped>
 .search-result-view {
-    .container {
-        padding: 0 1rem;
-    }
-
     &__wrapper {
         display: flex;
         flex-direction: column;

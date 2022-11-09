@@ -41,6 +41,7 @@ const emits = defineEmits({
 });
 
 const setType = (type) => {
+    toggleViewList();
     const selectedContentType = type;
     emits('setType', selectedContentType);
 } 
