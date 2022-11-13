@@ -2,28 +2,25 @@
     <div class="result-list-item">
         <div class="result-list-item__wrapper">
             <div class="result-list-item__poster">
-                <slot name="poster" />
+                <BaseImage :image-path="posterPath" />
             </div>
             <div class="result-list-item__content">
-                <h3 class="result-list-item__title">
-                    <slot name="title" />
-                </h3>
-                <div class="result-list-item__row-two">
-                    <div class="result-list-item__vote-average">
-                        <slot name="vote-average" />
-                    </div>
-                    <div class="result-list-item__data">
-                        <slot name="release-data" />
-    
-                    </div>  
-                </div>
-                <p class="result-list-item__overview">
-                    <slot name="overview" />
-                </p>
+                <slot name="content" />
             </div>
         </div>
     </div>
 </template>
+
+<script setup>
+import BaseImage from '../base/BaseImage.vue';
+
+const props = defineProps({
+    posterPath: {
+        type: String,
+        default: ''
+    }
+})
+</script>
 
 <style lang="scss" scoped>
 .result-list-item {
@@ -51,52 +48,16 @@
     }
 
     &__poster {
-        min-width: 100px;
-        max-width: 100px;
+        flex: 0 0 100px;
+        height: 150px;
         margin-right: 0.9375rem;
     }
 
     &__content {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 0.625rem;
+        padding: 0.9375rem;
         padding-left: 0;
-    }
 
-    &__title {
-        margin-bottom: 0.75rem;
-
-        @include overflow-text-for-columns(2);
-    }
-    
-    &__row-two {
-        display: flex;
-        margin-bottom: 0.55rem;
-    }
-
-    &__data {
-        color: #c5c5c5;
-    }
-    
-    &__vote-average {
-        margin-right: 20px;
-
-        color: rgb(77, 197, 77);
-        font-weight: 500;
-
-        @include for-size(laptop-up) {
-            font-weight: 600;
-        }
-    }
-
-    &__overview {
-        @include overflow-text-for-columns(3);
         
-        @include for-size(phone-only) {
-            @include overflow-text-for-columns(2);
-        }
     }
-
 }
 </style>

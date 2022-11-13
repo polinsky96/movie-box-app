@@ -30,6 +30,8 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .result-list-item-person-know-work {
+    font-size: 14px;
+
     &__wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -38,7 +40,7 @@ const props = defineProps({
     &__item {
         margin-right: 5px;
 
-        text-decoration: none;
+        @include overflow-text-for-columns(1);
     }
     
     &__link {
@@ -47,7 +49,7 @@ const props = defineProps({
     
     &__title {
         display: inline;
-        
+
         &:hover {
             color: $accent-color-hover;
         }

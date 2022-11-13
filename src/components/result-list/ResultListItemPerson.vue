@@ -1,27 +1,33 @@
 <template>
     <div class="result-list-item-person">
-        <div class="result-list-item-person__wrapper">
-            <BaseImage 
-                :image-path="details.profile_path"
-                alt="person-photo"
-                class="result-list-item-person__photo"/>
-            <div class="result-list-item-person__content">
-                <div class="result-list-item-person__name">
-                    {{ details.name }}
-                </div>
-                <div class="result-list-item-person__department">
-                    {{ details.known_for_department }}
-                </div>
-                <ResultListItemPersonKnowWork 
-                    :known-list="details.known_for"/>
-            </div>
-        </div>
+        <result-list-item :poster-path="details.profile_path">
+            <template v-slot:content>
+                <ResultListItemContent>
+                    <template v-slot:title>
+                        <ResultListItemTitle :details="details" />
+                    </template>
+                    <template v-slot:subtitle-block>
+                        <ResultListItemSubtitlePerson>
+                            <template v-slot:occupation>
+                                {{ details.known_for_department }}
+                            </template>
+                            <template v-slot:known-for>
+                                <ResultListItemPersonKnowWork :known-list="details.known_for"/>
+                            </template>
+                        </ResultListItemSubtitlePerson>
+                    </template>
+                </ResultListItemContent>
+            </template>
+        </result-list-item>
     </div>
 </template>
 
 <script setup>
-import BaseImage from '../base/BaseImage.vue';
 import ResultListItemPersonKnowWork from './ResultListItemPersonKnowWork.vue';
+import ResultListItem from './ResultListItem.vue';
+import ResultListItemContent from './ResultListItemContent.vue';
+import ResultListItemTitle from './ResultListItemTitle.vue';
+import ResultListItemSubtitlePerson from './ResultListItemSubtitlePerson.vue';
 
 const props = defineProps({
     details: {
@@ -56,9 +62,9 @@ const props = defineProps({
     }
 
     &__photo {
-        width: 6.25rem;
-        height: 9.375rem;
-        margin-right: 0.9375rem;
+        width: 100px;
+        height: 150px;
+        margin-right: 15px;
     }
 
     &__content {

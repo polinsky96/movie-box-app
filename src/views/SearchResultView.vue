@@ -33,12 +33,7 @@ const route = useRoute();
 const { setResponseStatus } = useResponseStatus();
 
 const typeContent = ref(theMovieDb.typeContent.movie);
-const resultsData = reactive({
-    page: null,
-    results: null,
-    totalPages: null,
-    totalResults: null
-});
+const resultsData = ref({});
 
 const query = route.params.query;
 
@@ -50,12 +45,7 @@ const getResultData = (page = 1) => {
             page: page
         },
         (response) => {
-            const { page, results, total_pages, total_results } = response;
-    
-            resultsData.page = page;
-            resultsData.results = results;
-            resultsData.totalPages = total_pages;
-            resultsData.totalResults = total_results;
+            resultsData.value = response;
         })
     );  
 }

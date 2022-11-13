@@ -7,7 +7,6 @@ export default async function searchMovies(option, success, error) {
     theMovieDb.common.validateCallback(success, error);
 
     await theMovieDb.common.client({
-        // url: `/search/movie` + theMovieDb.common.generateQuery(option),
         url: `/search/movie` + theMovieDb.common.generateQuery(option),
     },
     success,

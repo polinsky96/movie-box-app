@@ -1,47 +1,38 @@
 <template>
-    <div class="result-list">
+    <section class="result-list">
         <div class="result-list__wrapper">
             <div v-if="isEmptyResults" class="result-list__items">
                 <h3 class="result-list__empty">Not results</h3>
             </div>
-            <div v-if="typeContent === 'movie'" class="result-list__items">
-                <router-link 
-                    v-for="(result, idx) in results"
-                    :key="idx"
-                    :to="{ name: 'movie', params: { id: result.id }}"
-                    class="result-list__link">
-                    <ResultListItemMovie 
-                        :details="result"/>
-                </router-link>
+            <div 
+                v-if="typeContent === 'movie' || typeContent === 'tv'" 
+                class="result-list__items">
+                    <router-link 
+                        v-for="(result, idx) in results"
+                        :key="idx"
+                        :to="{ name: typeContent, params: { id: result.id }}"
+                        class="result-list__link">
+                            <ResultListItemMain :details="result"/>
+                    </router-link>
             </div>
-            <div v-if="typeContent === 'tv'" class="result-list__items">
-                <router-link 
-                    v-for="(result, idx) in results"
-                    :key="idx"
-                    :to="{ name: 'tv', params: { id: result.id }}"
-                    class="result-list__link">
-                    <ResultListItemTv 
-                        :details="result"/>
-                </router-link>
-            </div>
-            <div v-if="typeContent === 'person'" class="result-list__items">
-                <router-link 
-                    v-for="(result, idx) in results"
-                    :key="idx"
-                    :to="{ name: 'person', params: { id: result.id }}"
-                    class="result-list__link">
-                    <ResultListItemPerson 
-                        :details="result"/>
-                </router-link>
+            <div 
+                v-if="typeContent === 'person'" 
+                class="result-list__items">
+                    <router-link 
+                        v-for="(result, idx) in results"
+                        :key="idx"
+                        :to="{ name: typeContent, params: { id: result.id }}"
+                        class="result-list__link">
+                            <ResultListItemPerson :details="result"/>
+                    </router-link>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import ResultListItemMovie from './ResultListItemMovie.vue';
-import ResultListItemTv from './ResultListItemTv.vue';
+import ResultListItemMain from './ResultListItemMain.vue';
 import ResultListItemPerson from './ResultListItemPerson.vue';
 
 const props = defineProps({
