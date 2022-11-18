@@ -2,7 +2,7 @@
     <section class="detail-section">
         <div class="detail-section__wrapper">
             <div class="detail-section__poster">
-                <slot name="poster"/>
+                <BaseImage />
             </div>
             <div class="detail-section__right-column">
                 <div class="detail-section__title">
@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import BaseImage from '../base/BaseImage.vue';
 </script>
 
 <style lang="scss" scoped>

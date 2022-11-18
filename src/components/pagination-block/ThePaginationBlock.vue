@@ -57,7 +57,7 @@ import PaginationBlockDynamicItems from './PaginationBlockDynamicItems.vue';
 const props = defineProps({
     totalPages: {
         type: Number,
-        default: 15
+        default: 0
     }
 });
 
@@ -142,7 +142,6 @@ setDynamicPages();
     &__wrapper {
         display: flex;
         align-items: center;
-        // gap: 1.25rem;
         gap: 10px;
     }
 }

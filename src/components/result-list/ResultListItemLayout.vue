@@ -1,10 +1,10 @@
 <template>
-    <div class="result-list-item">
-        <div class="result-list-item__wrapper">
-            <div class="result-list-item__poster">
+    <div class="result-list-item-layout">
+        <div class="result-list-item-layout__wrapper">
+            <div class="result-list-item-layout__poster">
                 <BaseImage :image-path="posterPath" />
             </div>
-            <div class="result-list-item__content">
+            <div class="result-list-item-layout__content">
                 <slot name="content" />
             </div>
         </div>
@@ -23,7 +23,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-.result-list-item {
+.result-list-item-layout {
     position: relative;
 
     max-height: 150px;
@@ -56,8 +56,6 @@ const props = defineProps({
     &__content {
         padding: 0.9375rem;
         padding-left: 0;
-
-        
     }
 }
 </style>

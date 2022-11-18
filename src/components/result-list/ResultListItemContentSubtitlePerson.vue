@@ -1,10 +1,10 @@
 <template>
-    <div class="result-list-item-subtitle-person">
-        <div class="result-list-item-subtitle-person__wrapper">
-            <div class="result-list-item-subtitle-person__occupation">
+    <div class="result-list-item-content-subtitle-person">
+        <div class="result-list-item-content-subtitle-person__wrapper">
+            <div class="result-list-item-content-subtitle-person__occupation">
                 <slot name="occupation" />
             </div>
-            <div class="result-list-item-subtitle-person__known-for">
+            <div class="result-list-item-content-subtitle-person__known-for">
                 <slot name="known-for" />
             </div>  
         </div>
@@ -12,7 +12,7 @@
 </template>
 
 <style lang="scss" scoped>
-.result-list-item-subtitle-person {
+.result-list-item-content-subtitle-person {
     &__wrapper {
         display: flex;
         flex-direction: column;

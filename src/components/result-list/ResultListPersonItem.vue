@@ -1,33 +1,33 @@
 <template>
     <div class="result-list-item-person">
-        <result-list-item :poster-path="details.profile_path">
+        <ResultListItemLayout :poster-path="details.profile_path">
             <template v-slot:content>
-                <ResultListItemContent>
+                <ResultListItemContentLayout>
                     <template v-slot:title>
-                        <ResultListItemTitle :details="details" />
+                        <ResultListItemContentTitle :details="details" />
                     </template>
                     <template v-slot:subtitle-block>
-                        <ResultListItemSubtitlePerson>
+                        <ResultListItemContentSubtitlePerson>
                             <template v-slot:occupation>
                                 {{ details.known_for_department }}
                             </template>
                             <template v-slot:known-for>
                                 <ResultListItemPersonKnowWork :known-list="details.known_for"/>
                             </template>
-                        </ResultListItemSubtitlePerson>
+                        </ResultListItemContentSubtitlePerson>
                     </template>
-                </ResultListItemContent>
+                </ResultListItemContentLayout>
             </template>
-        </result-list-item>
+        </ResultListItemLayout>
     </div>
 </template>
 
 <script setup>
 import ResultListItemPersonKnowWork from './ResultListItemPersonKnowWork.vue';
-import ResultListItem from './ResultListItem.vue';
-import ResultListItemContent from './ResultListItemContent.vue';
-import ResultListItemTitle from './ResultListItemTitle.vue';
-import ResultListItemSubtitlePerson from './ResultListItemSubtitlePerson.vue';
+import ResultListItemLayout from './ResultListItemLayout.vue';
+import ResultListItemContentLayout from './ResultListItemContentLayout.vue';
+import ResultListItemContentTitle from './ResultListItemContentTitle.vue';
+import ResultListItemContentSubtitlePerson from './ResultListItemContentSubtitlePerson.vue';
 
 const props = defineProps({
     details: {

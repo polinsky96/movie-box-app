@@ -1,5 +1,5 @@
 <template>
-    <div class="result-list-item-title">
+    <div class="result-list-item-content-title">
         {{ getTitle }}
     </div>
 </template>

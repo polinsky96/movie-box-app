@@ -1,5 +1,5 @@
 <template>
-    <div class="result-list-item-date">
+    <div class="result-list-item-content-date">
         {{ getDate }}
     </div>
 </template>
@@ -22,7 +22,7 @@ const getDate = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.result-list-item-date {
+.result-list-item-content-date {
     color: $font-subtitle-color;
 }
 </style>

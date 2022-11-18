@@ -12,7 +12,7 @@
                         :key="idx"
                         :to="{ name: typeContent, params: { id: result.id }}"
                         class="result-list__link">
-                            <ResultListItemMain :details="result"/>
+                            <ResultListMainItem :details="result"/>
                     </router-link>
             </div>
             <div 
@@ -23,7 +23,7 @@
                         :key="idx"
                         :to="{ name: typeContent, params: { id: result.id }}"
                         class="result-list__link">
-                            <ResultListItemPerson :details="result"/>
+                            <ResultListPersonItem :details="result"/>
                     </router-link>
             </div>
         </div>
@@ -32,8 +32,8 @@
 
 <script setup>
 import { computed } from 'vue';
-import ResultListItemMain from './ResultListItemMain.vue';
-import ResultListItemPerson from './ResultListItemPerson.vue';
+import ResultListMainItem from './ResultListMainItem.vue';
+import ResultListPersonItem from './ResultListPersonItem.vue';
 
 const props = defineProps({
     results: {

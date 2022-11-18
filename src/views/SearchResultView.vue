@@ -9,9 +9,9 @@
                         :type-content="typeContent"
                         class="search-result-view__result-list"/>
                     <PaginationBlock
-                        v-show="resultsData.totalPages > 1" 
+                        v-show="resultsData.total_pages > 1" 
                         @set-current-page="getResultData"
-                        :total-pages="resultsData.totalPages"/>
+                        :total-pages="resultsData.total_pages"/>
                 </div>
             </div>
         </div>
@@ -19,11 +19,11 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useResponseStatus } from '../modules/useResponseStatus';
 
-import ResultList from '../components/result-list/ResultList.vue';
+import ResultList from '../components/result-list/TheResultList.vue';
 import TypeContentList from '../components/type-content-list/TheTypeContentList.vue';
 import PaginationBlock from '../components/pagination-block/ThePaginationBlock.vue';
 

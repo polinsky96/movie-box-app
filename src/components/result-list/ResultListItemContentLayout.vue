@@ -1,19 +1,19 @@
 <template>
-    <div class="result-list-item-content">
-        <h3 class="result-list-item-content__title">
+    <div class="result-list-item-content-layout">
+        <h3 class="result-list-item-content-layout__title">
             <slot name="title" />
         </h3>
-        <div class="result-list-item-content__subtitle-block">
+        <div class="result-list-item-content-layout__subtitle-block">
             <slot name="subtitle-block" />
         </div>
-        <p class="result-list-item-content__overview">
+        <p class="result-list-item-content-layout__overview">
             <slot name="overview" />
         </p>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.result-list-item-content {
+.result-list-item-content-layout {
     &__title {
         margin-bottom: 0.3125rem;
         

@@ -1,7 +1,7 @@
 <template>
     <div 
         @click="setCurrentPage"
-        :class="{'select--item': value === currentPage}"
+        :class="{'pagination-block-item_select--item': value == currentPage}"
         class="pagination-block-item">
         <div class="pagination-block-item__value">
             {{ value }}
@@ -46,10 +46,10 @@ const setCurrentPage = () => {
             }
         }
     }
-}
 
-.select--item {
-    background-color: $accent-color;
-    border-radius: $card-border-radius;
+    &_select--item {
+        background-color: $accent-color;
+        border-radius: $card-border-radius;
+    }
 }
 </style>

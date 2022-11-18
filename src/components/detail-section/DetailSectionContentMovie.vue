@@ -8,7 +8,7 @@
             {{ details.original_title }}
         </template>
         <template v-slot:content>
-          <detail-section-content>
+          <DetailSectionContent>
             <template v-slot:rating>
                 <RatingBlock :score="details.vote_average"/>
             </template>
@@ -24,7 +24,7 @@
             <template v-slot:overview>
                 {{ details.overview }}
             </template>
-          </detail-section-content>
+          </DetailSectionContent>
         </template>
       </DetailSection>
   </div>
