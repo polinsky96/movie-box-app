@@ -63,7 +63,7 @@ theMovieDb.common = {
 
     client: async function(option, success, myError) {
         'use strict';
-
+        
         try {
             const response = await axios.get(theMovieDb.common.base_url + option.url);
             success(response.data);

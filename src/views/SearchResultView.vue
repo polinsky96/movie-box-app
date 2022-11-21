@@ -34,15 +34,18 @@ import PaginationBlock from '../components/pagination-block/ThePaginationBlock.v
 import theMovieDb from '../modules/theMovieDb/theMovieDb';
 import getContentTypes from '../modules/interface/getContentTypes';
 
+import getPersonList from '../modules/interface/getPersonList';
+
 const route = useRoute();
 const { setResponseStatus } = useResponseStatus();
+
+const query = route.params.query;
 
 const contentTypes = getContentTypes();
 
 const typeContent = ref(contentTypes.movie);
 const resultsData = ref({});
 
-const query = route.params.query;
 
 const getResultData = (page = 1) => {
     setResponseStatus(theMovieDb.search.searchContentSelectType(
@@ -59,10 +62,12 @@ const getResultData = (page = 1) => {
 
 const switchTypeContent = (type) => {
     typeContent.value = type;
-    getResultData();
+    // getResultData();
 }
 
-getResultData();
+// getResultData();
+
+getPersonList({ query: 'hello', page: 1 });
 </script>
 
 <style lang="scss" scoped>
