@@ -1,5 +1,5 @@
 import theMovieDb from "../theMovieDb/theMovieDb";
 
-export default function getContentTypes() {
+export default function getContentTypesList() {
     return theMovieDb.typeContent;
 }

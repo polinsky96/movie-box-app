@@ -32,8 +32,6 @@ export default async function getPersonList(option) {
         }
     })
 
-    console.log(results);
-
     return {
         results,
         page,

@@ -7,13 +7,13 @@
             <div class="search-result-view__wrapper">
                 <div class="search-result-view__column">
                     <ResultList 
-                        :results="resultsData.results || []"
+                        :results="results.results || []"
                         :type-content="typeContent"
                         class="search-result-view__result-list"/>
                     <PaginationBlock
-                        v-show="resultsData.total_pages > 1" 
-                        @set-current-page="getResultData"
-                        :total-pages="resultsData.total_pages"/>
+                        v-show="results.totalPages > 1" 
+                        @set-current-page="getResults"
+                        :total-pages="results.totalPages"/>
                 </div>
             </div>
         </BaseContainer>
@@ -31,43 +31,30 @@ import ResultList from '../components/result-list/TheResultList.vue';
 import TypeContentList from '../components/type-content-list/TheTypeContentList.vue';
 import PaginationBlock from '../components/pagination-block/ThePaginationBlock.vue';
 
-import theMovieDb from '../modules/theMovieDb/theMovieDb';
-import getContentTypes from '../modules/interface/getContentTypes';
-
-import getPersonList from '../modules/interface/getPersonList';
+import getContentList from '../modules/interface/getContentList';
+import getContentTypesList from '../modules/interface/getContentTypesList';
 
 const route = useRoute();
 const { setResponseStatus } = useResponseStatus();
 
 const query = route.params.query;
 
-const contentTypes = getContentTypes();
-
+const contentTypes = getContentTypesList();
 const typeContent = ref(contentTypes.movie);
-const resultsData = ref({});
+const results = ref({});
 
-
-const getResultData = (page = 1) => {
-    setResponseStatus(theMovieDb.search.searchContentSelectType(
-        typeContent.value,
-        { 
-            query: query, 
-            page: page
-        },
-        (response) => {
-            resultsData.value = response;
-        })
-    );  
+const getResults = (page = 1) => {
+    setResponseStatus(async () => {
+        results.value = await getContentList(typeContent.value, { query, page });
+    })
 }
 
 const switchTypeContent = (type) => {
     typeContent.value = type;
-    // getResultData();
+    getResults();
 }
 
-// getResultData();
-
-getPersonList({ query: 'hello', page: 1 });
+getResults();
 </script>
 
 <style lang="scss" scoped>
