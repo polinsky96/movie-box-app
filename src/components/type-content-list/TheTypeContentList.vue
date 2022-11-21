@@ -2,7 +2,7 @@
     <TypeContentListItems
         v-if="!isMobile && !isTablet" 
         @set-type="setType"
-        :types-content="typeContent || {}"
+        :types-content="contentTypes"
         :class="{
             'hidden': hiddenElement
         }" 
@@ -10,7 +10,7 @@
     <TypeContentListMobile 
         v-else
         @set-type="setType"
-        :types-content="typeContent || {}"
+        :types-content="contentTypes"
         :class="{
             'hidden--mobile': hiddenElement
         }" 
@@ -21,15 +21,21 @@
 import TypeContentListItems from './TypeContentListItems.vue';
 import TypeContentListMobile from './TypeContentListMobile.vue';
 
-import theMovieDb from '../../modules/theMovieDb/theMovieDb';
 import { useScrollHideElement } from '../../modules/useScrollHideElement';
 import { useTypeDevices } from '../../modules/useTypeDevice';
+
+const props = defineProps({
+    contentTypes: {
+        type: Object,
+        default: () => {
+            return {}
+        }
+    }
+})
 
 const emits = defineEmits({
     setType: null
 })
-
-const typeContent = theMovieDb.typeContent;
 
 const setType = (type) => {
     const selectedContentType = type;

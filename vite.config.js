@@ -20,7 +20,6 @@ export default defineConfig({
     }
   },
   server: {
-    host: true,
-    open: true
+    host: true
   },
 })

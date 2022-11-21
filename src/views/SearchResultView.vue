@@ -1,7 +1,9 @@
 <template>
     <div class="search-result-view">
         <BaseContainer>        
-            <TypeContentList @set-type="switchTypeContent"/>
+            <TypeContentList 
+                @set-type="switchTypeContent"
+                :content-types="contentTypes"/>
             <div class="search-result-view__wrapper">
                 <div class="search-result-view__column">
                     <ResultList 
@@ -30,11 +32,14 @@ import TypeContentList from '../components/type-content-list/TheTypeContentList.
 import PaginationBlock from '../components/pagination-block/ThePaginationBlock.vue';
 
 import theMovieDb from '../modules/theMovieDb/theMovieDb';
+import getContentTypes from '../modules/interface/getContentTypes';
 
 const route = useRoute();
 const { setResponseStatus } = useResponseStatus();
 
-const typeContent = ref(theMovieDb.typeContent.movie);
+const contentTypes = getContentTypes();
+
+const typeContent = ref(contentTypes.movie);
 const resultsData = ref({});
 
 const query = route.params.query;

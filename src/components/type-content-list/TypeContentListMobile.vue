@@ -30,20 +30,19 @@ const props = defineProps({
     }
 });
 
+const emits = defineEmits({
+    setType: null
+});
+
 const isViewList = ref(false);
 
 const toggleViewList = () => {
     isViewList.value = !isViewList.value;
 }
 
-const emits = defineEmits({
-    setType: null
-});
-
 const setType = (type) => {
     toggleViewList();
-    const selectedContentType = type;
-    emits('setType', selectedContentType);
+    emits('setType', type);
 } 
 </script>
 
