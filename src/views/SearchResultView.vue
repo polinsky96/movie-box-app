@@ -1,6 +1,6 @@
 <template>
     <div class="search-result-view">
-        <div class="container">
+        <BaseContainer>        
             <TypeContentList @set-type="switchTypeContent"/>
             <div class="search-result-view__wrapper">
                 <div class="search-result-view__column">
@@ -14,7 +14,7 @@
                         :total-pages="resultsData.total_pages"/>
                 </div>
             </div>
-        </div>
+        </BaseContainer>
     </div>
 </template>
 
@@ -22,6 +22,8 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useResponseStatus } from '../modules/useResponseStatus';
+
+import BaseContainer from '../components/base/BaseContainer.vue';
 
 import ResultList from '../components/result-list/TheResultList.vue';
 import TypeContentList from '../components/type-content-list/TheTypeContentList.vue';

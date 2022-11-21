@@ -1,7 +1,7 @@
 <template>
   <div class="movie-view">
     <div class="movie-view__wrapper">
-      <DetailSectionContentMovie :details="details"/>
+      <DetailSectionMovie :details="details"/>
     </div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import DetailSectionContentMovie from '../components/detail-section/DetailSectionContentMovie.vue';
+import DetailSectionMovie from '../components/detail-section/DetailSectionMovie.vue';
 
 import theMovieDb from '../modules/theMovieDb/theMovieDb';
 import { useResponseStatus } from '../modules/useResponseStatus';

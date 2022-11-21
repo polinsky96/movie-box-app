@@ -5,8 +5,8 @@
         <ul class="type-content-list-items__items">
             <li 
                 v-for="(type, idx) in typesContent"
-                @click="setType"
-                :key="idx" 
+                @click="setType(type)"
+                :key="idx"
                 class="type-content-list-items__item">
                 {{type}}
             </li>
@@ -28,9 +28,8 @@ const emits = defineEmits({
     setType: null
 });
 
-const setType = (event) => {
-    const selectedContentType = event.target.innerHTML;
-    emits('setType', selectedContentType);
+const setType = (type) => {
+    emits('setType', type);
 } 
 </script>
 

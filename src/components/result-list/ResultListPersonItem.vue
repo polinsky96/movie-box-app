@@ -4,7 +4,7 @@
             <template v-slot:content>
                 <ResultListItemContentLayout>
                     <template v-slot:title>
-                        <ResultListItemContentTitle :details="details" />
+                        <BaseContentTitle :details="details" />
                     </template>
                     <template v-slot:subtitle-block>
                         <ResultListItemContentSubtitlePerson>
@@ -26,7 +26,7 @@
 import ResultListItemPersonKnowWork from './ResultListItemPersonKnowWork.vue';
 import ResultListItemLayout from './ResultListItemLayout.vue';
 import ResultListItemContentLayout from './ResultListItemContentLayout.vue';
-import ResultListItemContentTitle from './ResultListItemContentTitle.vue';
+import BaseContentTitle from '../base/BaseContentTitle.vue';
 import ResultListItemContentSubtitlePerson from './ResultListItemContentSubtitlePerson.vue';
 
 const props = defineProps({

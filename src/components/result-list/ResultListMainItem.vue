@@ -4,7 +4,7 @@
             <template v-slot:content>
                 <ResultListItemContentLayout>
                     <template v-slot:title>
-                        <ResultListItemContentTitle :details="details" />
+                        <BaseContentTitle :details="details" />
                     </template>
                     <template v-slot:subtitle-block>
                         <ResultListItemContentSubtitle> 
@@ -12,7 +12,7 @@
                                 <RatingBlock :score="details.vote_average"/>
                             </template>
                             <template v-slot:release-data>
-                                <ResultListItemContentDate :details="details" />
+                                <BaseContentDate :details="details" />
                             </template>
                         </ResultListItemContentSubtitle>
                     </template>
@@ -27,8 +27,8 @@
 import ResultListItemLayout from './ResultListItemLayout.vue';
 import ResultListItemContentLayout from './ResultListItemContentLayout.vue';
 import ResultListItemContentSubtitle from './ResultListItemContentSubtitle.vue';
-import ResultListItemContentTitle from './ResultListItemContentTitle.vue';
-import ResultListItemContentDate from './ResultListItemContentDate.vue';
+import BaseContentTitle from '../base/BaseContentTitle.vue';
+import BaseContentDate from '../base/BaseContentDate.vue';
 import RatingBlock from '../rating-block/RatingBlock.vue';
 
 const props = defineProps({

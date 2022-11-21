@@ -1,5 +1,5 @@
 <template>
-    <div class="result-list-item-content-title">
+    <div class="base-content-title">
         {{ getTitle }}
     </div>
 </template>
@@ -28,4 +28,4 @@ const getTitle = computed(() => {
 
     return props.details[currentField];
 });
-</script>
+</script> 
