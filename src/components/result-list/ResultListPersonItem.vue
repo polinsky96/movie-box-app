@@ -1,18 +1,18 @@
 <template>
     <div class="result-list-item-person">
-        <ResultListItemLayout :poster-path="details.profile_path">
+        <ResultListItemLayout :poster-path="details.profilePath">
             <template v-slot:content>
                 <ResultListItemContentLayout>
                     <template v-slot:title>
-                        <BaseContentTitle :details="details" />
+                        <BaseContentTitle :title="details.name" />
                     </template>
                     <template v-slot:subtitle-block>
                         <ResultListItemContentSubtitlePerson>
                             <template v-slot:occupation>
-                                {{ details.known_for_department }}
+                                {{ details.department }}
                             </template>
                             <template v-slot:known-for>
-                                <ResultListItemPersonKnowWork :known-list="details.known_for"/>
+                                <ResultListItemPersonKnowWork :known-list="details.knownFor"/>
                             </template>
                         </ResultListItemContentSubtitlePerson>
                     </template>

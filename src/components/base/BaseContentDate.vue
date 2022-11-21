@@ -6,11 +6,9 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-    details: {
-        type: Object,
-        default: () => {
-            return {}
-        }
+    date: {
+        type: String,
+        default: ''
     },
 
     alsoYear: {
@@ -20,8 +18,7 @@ const props = defineProps({
 });
 
 const getDate = computed(() => {
-    const date = props.details.release_date || props.details.first_air_date || '-';
-    const formatDate = date.split('-').reverse();
+    const formatDate = props.date.split('-').reverse();
     
     if (props.alsoYear) {
         return formatDate[2]
@@ -29,8 +26,6 @@ const getDate = computed(() => {
 
     return formatDate.join('.')
 });
-
-
 </script>
 
 <style lang="scss" scoped>

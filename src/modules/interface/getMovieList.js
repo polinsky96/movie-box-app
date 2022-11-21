@@ -18,7 +18,7 @@ export default async function getMovieList(option) {
         return {
             title: result.title,
             id: result.id,
-            releaseDate: result.releaseDate,
+            releaseDate: result.release_date,
             rating: result.vote_average,
             overview: result.overview,
             posterPath: result.poster_path

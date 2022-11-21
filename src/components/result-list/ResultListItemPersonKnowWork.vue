@@ -6,7 +6,7 @@
                 :key="idx">
                     <router-link class="result-list-item-person-know-work__link" to="#">
                         <div class="result-list-item-person-know-work__title">
-                            {{(item['original_name'] || item['original_title'])}}
+                            {{item.title}}
                         </div>
                     </router-link>
                     <div class="result-list-item-person-know-work__separator">

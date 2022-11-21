@@ -20,9 +20,9 @@ export const useResponseStatus = () => {
   const setResponseStatus = async (callback) => {
     requestState.value = requestStatus.progress;
     storeLoader.setLoading();
-    
+
     try {
-      await callback;
+      await callback();
       
       requestState.value = requestStatus.success;
       storeLoader.setSuccess();

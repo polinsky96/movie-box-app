@@ -1,22 +1,22 @@
 <template>
     <div class="result-list-item-main">
-        <ResultListItemLayout :poster-path="details.poster_path">
-            <template v-slot:content>
+        <ResultListItemLayout :poster-path="details.posterPath">
+            <template #content>
                 <ResultListItemContentLayout>
-                    <template v-slot:title>
-                        <BaseContentTitle :details="details" />
+                    <template #title>
+                        <BaseContentTitle :title="details.title" />
                     </template>
-                    <template v-slot:subtitle-block>
+                    <template #subtitle-block>
                         <ResultListItemContentSubtitle> 
-                            <template v-slot:vote-average>
-                                <RatingBlock :score="details.vote_average"/>
+                            <template #vote-average>
+                                <RatingBlock :rating="details.rating"/>
                             </template>
-                            <template v-slot:release-data>
-                                <BaseContentDate :details="details" />
+                            <template #release-data>
+                                <BaseContentDate :date="details.releaseDate" />
                             </template>
                         </ResultListItemContentSubtitle>
                     </template>
-                    <template v-slot:overview>{{ details.overview }}</template>
+                    <template #overview>{{ details.overview }}</template>
                 </ResultListItemContentLayout>
             </template>
         </ResultListItemLayout>

@@ -1,31 +1,12 @@
 <template>
-    <div class="base-content-title">
-        {{ getTitle }}
-    </div>
+    <div class="base-content-title">{{ title }}</div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-
 const props = defineProps({
-    details: {
-        type: Object,
-        default: () => {
-            return {}
-        }
+    title: {
+        type: String,
+        default: ''
     }
-});
-
-const getTitle = computed(() => {
-    const fieldTitleList = ['original_title', 'original_name', 'name'];
-    let currentField;
-
-    fieldTitleList.forEach( field => {
-        if (field in props.details) {
-            currentField = field;
-        }
-    });
-
-    return props.details[currentField];
 });
 </script> 

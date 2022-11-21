@@ -18,10 +18,10 @@ export default async function getPersonList(option) {
         const knownFor = result.known_for.map( item => {
             return {
                 id: item.id,
-                title: item.title,
-                posterPath: item.posterPath,
+                title: item.original_name || item.original_title,
+                posterPath: item.poster_path,
             }
-        })
+        });
 
         return {
             id: result.id,

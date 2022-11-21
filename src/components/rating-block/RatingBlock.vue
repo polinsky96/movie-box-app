@@ -1,18 +1,18 @@
 <template>
     <div 
         :class="{
-            high: 7 <= score && score <= 10,
-            medium: 5 <= score && score < 7,
-            low: 0 < score && score < 5
+            high: 7 <= rating && rating <= 10,
+            medium: 5 <= rating && rating < 7,
+            low: 0 < rating && rating < 5
         }"
         class="rating-block">
-        {{ score }}
+        {{ rating }}
     </div>
 </template>
 
 <script setup>
 const props = defineProps({
-    score: {
+    rating: {
         type: Number,
         default: 0
     }
