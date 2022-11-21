@@ -28,6 +28,7 @@ export default async function getMovieList(option) {
     return {
         results,
         page,
-        totalPages
+        totalPages,
+        type: 'movie'
     }
 }

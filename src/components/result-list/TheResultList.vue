@@ -5,23 +5,23 @@
                 <h3 class="result-list__empty">Not results</h3>
             </div>
             <div 
-                v-if="typeContent === 'movie' || typeContent === 'tv'" 
+                v-if="results.type === 'movie' || results.type === 'tv'" 
                 class="result-list__items">
                     <router-link 
-                        v-for="(result, idx) in results"
+                        v-for="(result, idx) in results.results"
                         :key="idx"
-                        :to="{ name: typeContent, params: { id: result.id }}"
+                        :to="{ name: results.type, params: { id: result.id }}"
                         class="result-list__link">
                             <ResultListMainItem :details="result"/>
                     </router-link>
             </div>
             <div 
-                v-if="typeContent === 'person'" 
+                v-if="results.type === 'person'" 
                 class="result-list__items">
                     <router-link 
-                        v-for="(result, idx) in results"
+                        v-for="(result, idx) in results.results"
                         :key="idx"
-                        :to="{ name: typeContent, params: { id: result.id }}"
+                        :to="{ name: results.type, params: { id: result.id }}"
                         class="result-list__link">
                             <ResultListPersonItem :details="result"/>
                     </router-link>
@@ -37,24 +37,15 @@ import ResultListPersonItem from './ResultListPersonItem.vue';
 
 const props = defineProps({
     results: {
-        type: Array,
+        type: Object,
         default: () => {
-            return []
+            return {}
         }
-    },
-
-    typeContent: {
-        type: String,
-        default: 'movie'
     }
 })
 
 const isEmptyResults = computed(() => {
-    if (props.results.length === 0) {
-        return true
-    }
-
-    return false
+    return props.results.results && props.results.results.length === 0
 })
 </script>
 

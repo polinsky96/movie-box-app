@@ -28,6 +28,7 @@ export default async function getTvList(option) {
     return {
         results,
         page,
-        totalPages
+        totalPages,
+        type: 'tv'
     }
 }

@@ -1,17 +1,17 @@
 <template>
     <div class="result-list-item-person">
         <ResultListItemLayout :poster-path="details.profilePath">
-            <template v-slot:content>
+            <template #content>
                 <ResultListItemContentLayout>
-                    <template v-slot:title>
+                    <template #title>
                         <BaseContentTitle :title="details.name" />
                     </template>
-                    <template v-slot:subtitle-block>
+                    <template #subtitle-block>
                         <ResultListItemContentSubtitlePerson>
-                            <template v-slot:occupation>
+                            <template #occupation>
                                 {{ details.department }}
                             </template>
-                            <template v-slot:known-for>
+                            <template #known-for>
                                 <ResultListItemPersonKnowWork :known-list="details.knownFor"/>
                             </template>
                         </ResultListItemContentSubtitlePerson>

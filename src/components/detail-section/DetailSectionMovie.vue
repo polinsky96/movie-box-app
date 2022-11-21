@@ -4,24 +4,24 @@
       <DetailSectionLayout 
         :poster-path="details.poster_path"
         class="detail-section-content-movie__backdrop">
-        <template v-slot:content>
+        <template #content>
           <DetailSectionContentLayout>
-            <template v-slot:title>
+            <template #title>
                 <BaseContentTitle :details="details" />
             </template>
-            <template v-slot:rating>
+            <template #rating>
                 <RatingBlock :score="details.vote_average"/>
             </template>
-            <template v-slot:date>
+            <template #date>
                 <BaseContentDate :details="details" />
             </template>
-            <template v-slot:runtime>
+            <template #runtime>
                 <BaseContentRuntime :runtime="details.runtime"/>
             </template>
-            <template v-slot:tagline>
+            <template #tagline>
                 {{ details.tagline }}
             </template>
-            <template v-slot:overview>
+            <template #overview>
                 {{ details.overview }}
             </template>
           </DetailSectionContentLayout>

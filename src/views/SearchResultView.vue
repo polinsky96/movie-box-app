@@ -7,8 +7,7 @@
             <div class="search-result-view__wrapper">
                 <div class="search-result-view__column">
                     <ResultList 
-                        :results="results.results || []"
-                        :type-content="typeContent"
+                        :results="results"
                         class="search-result-view__result-list"/>
                     <PaginationBlock
                         v-show="results.totalPages > 1" 
@@ -40,17 +39,17 @@ const { setResponseStatus } = useResponseStatus();
 const query = route.params.query;
 
 const contentTypes = getContentTypesList();
-const typeContent = ref(contentTypes.movie);
+const currentType = ref('movie');
 const results = ref({});
 
-const getResults = (page = 1) => {
+const getResults = (page) => {
     setResponseStatus(async () => {
-        results.value = await getContentList(typeContent.value, { query, page });
+        results.value = await getContentList(currentType.value, { query, page });
     })
 }
 
 const switchTypeContent = (type) => {
-    typeContent.value = type;
+    currentType.value = type;
     getResults();
 }
 

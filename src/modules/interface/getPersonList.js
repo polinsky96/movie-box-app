@@ -35,6 +35,7 @@ export default async function getPersonList(option) {
     return {
         results,
         page,
-        totalPages
+        totalPages,
+        type: 'person'
     }
 }

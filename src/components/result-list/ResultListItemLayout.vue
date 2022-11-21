@@ -2,7 +2,7 @@
     <div class="result-list-item-layout">
         <div class="result-list-item-layout__wrapper">
             <div class="result-list-item-layout__poster">
-                <BaseImage :image-path="posterPath" />
+                <BaseImage :image-path="posterPath" image-size="w154" />
             </div>
             <div class="result-list-item-layout__content">
                 <slot name="content" />

@@ -70,6 +70,7 @@ const dynamicPages = reactive([]);
 const dynamicPaginate = ref(false);
 
 const setDynamicPages = () => {
+    currentPage.value = 1;
     dynamicPages.length = 0;
     let i = 2;
 
