@@ -1,9 +1,11 @@
 <template>
     <section class="detail-section-layout">
         <div class="detail-section-layout__wrapper">
-            <BaseImage 
-                class="detail-section-layout__poster"
-                :image-path="posterPath" />
+            <div class="detail-section-layout__poster">
+                <BaseImage 
+                    :image-path="posterPath" 
+                    image-size="w500"/>
+            </div>
             <div class="detail-section-layout__content">
                 <slot name="content" />
             </div>
@@ -28,24 +30,29 @@ const props = defineProps({
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        background-color: $main-color;
         
         @include for-size(tablet-up) {
             padding: 1.875rem 2.5rem;
             flex-direction: row;
-            align-items: flex-start;
+            align-items: center;
         }
     }
 
     &__poster {
         min-width: 300px;
         max-width: 300px;
-        margin-right: 0.9375rem;
+        height: 450px;
+        margin-right: 2.5rem;
 
         border-radius: $card-border-radius;
+        overflow: hidden;
     }
     
     &__content {
         flex-basis: 100%;
+
         display: flex;
         flex-direction: column;
         width: 100%;

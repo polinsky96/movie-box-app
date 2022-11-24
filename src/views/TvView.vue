@@ -1,13 +1,32 @@
 <template>
-    <div class="tv-view">
-      Hello. i am page about tv
+  <div class="tv-view">
+    <div class="tv-view__wrapper">
+      <DetailSectionMovie :details="details"/>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script setup>
+<script setup>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import DetailSectionMovie from '../components/detail-section/DetailSectionMovie.vue';
+
+import getTvDetails from '../modules/interface/getTvDetails';
+import { useResponseStatus } from '../modules/useResponseStatus';
+
+const route = useRoute();
+const { setResponseStatus } = useResponseStatus();
+
+const id = route.params.id;
+const details = ref({});
+
+const getDetails = async () => {
+  details.value = await getTvDetails({ id });
+}
+
+getDetails();
+</script>
   
-  </script>
-  
-  <style lang="scss" scoped>
-  
-  </style>
+<style lang="scss" scoped>
+
+</style>

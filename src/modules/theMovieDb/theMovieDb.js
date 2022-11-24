@@ -2,6 +2,7 @@ import axios from "axios";
 
 import search from "./search/search";
 import movies from "./movies/movies";
+import tv from "./tv/tv";
 
 const theMovieDb = {}
 
@@ -83,5 +84,6 @@ theMovieDb.typeContent = {
 }
 theMovieDb.search = search;
 theMovieDb.movies = movies;
+theMovieDb.tv = tv;
 
 export default theMovieDb;

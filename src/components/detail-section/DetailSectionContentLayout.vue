@@ -19,6 +19,7 @@
                 <slot name="tagline"/>
             </div>
             <div class="detail-section-content-layout__overview">
+                <h3 class="detail-section-content-layout__overview-title">Overview</h3>
                 <slot name="overview" />
             </div>
             <div class="detail-section-content-layout__maker">
@@ -34,9 +35,30 @@
 
 <style lang="scss" scoped>
 .detail-section-content-layout {
+    &__title {
+        margin-bottom: 0.3rem;
+    }
+
     &__subtitle {
         display: flex;
         gap: 15px;
+        margin-bottom: 1rem;
+    }
+
+    &__overview-title {
+        margin-bottom: 1rem;
+    }
+
+    &__tagline {
+        margin-bottom: 1rem;
+
+        color: $font-subtitle-color;
+    }
+
+    @include for-size(laptop-up) {
+        &__title {
+            font-size: 2rem;
+        }
     }
 }
 </style>

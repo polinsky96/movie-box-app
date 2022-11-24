@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue';
 import * as breakpoints from '../assets/styles/breakpoints/_breakoints.module.scss';
 
-export  const useTypeDevices = () => {
+export const useTypeDevices = () => {
     const screenSize = ref(window.innerWidth);
 
     const isMobile = computed(() => {

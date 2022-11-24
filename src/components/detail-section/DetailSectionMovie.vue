@@ -1,19 +1,18 @@
 <template>
   <div class="detail-section-content-movie">
-      <DetailSectionBackdrop :backdrop-path="details.backdrop_path" />
       <DetailSectionLayout 
-        :poster-path="details.poster_path"
+        :poster-path="details.posterPath"
         class="detail-section-content-movie__backdrop">
         <template #content>
           <DetailSectionContentLayout>
             <template #title>
-                <BaseContentTitle :details="details" />
+                <BaseContentTitle :title="details.title" />
             </template>
             <template #rating>
-                <RatingBlock :score="details.vote_average"/>
+                <RatingBlock :rating="details.rating"/>
             </template>
             <template #date>
-                <BaseContentDate :details="details" />
+                <BaseContentDate :date="details.releaseDate" />
             </template>
             <template #runtime>
                 <BaseContentRuntime :runtime="details.runtime"/>
@@ -39,13 +38,12 @@ import RatingBlock from '../rating-block/RatingBlock.vue';
 
 import DetailSectionLayout from './DetailSectionLayout.vue';
 import DetailSectionContentLayout from './DetailSectionContentLayout.vue';
-import DetailSectionBackdrop from './DetailSectionBackdrop.vue';
 
 const props = defineProps({
     details: {
         type: Object,
         default: () => {
-            return 
+            return {}
         }
     }
 })

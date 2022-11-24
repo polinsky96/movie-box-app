@@ -9,7 +9,7 @@
           :alt="alt"
           @load="onImgLoad"
           @error="onImgError"
-          class="base-image">
+          class="base-image__image">
     </div>
 </template>
 
@@ -65,7 +65,13 @@ watch(
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
     &__loader, &__error {
         width: 100%;

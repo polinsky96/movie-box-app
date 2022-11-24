@@ -6,7 +6,7 @@
             low: 0 < rating && rating < 5
         }"
         class="rating-block">
-        {{ rating }}
+        {{ rating.toFixed(1) }}
     </div>
 </template>
 
