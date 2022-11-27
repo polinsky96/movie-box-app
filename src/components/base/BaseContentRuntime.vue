@@ -1,5 +1,5 @@
 <template>
-    <div class="base-content-runtime">{{ getConvertRuntime }}</div>
+    <div v-show="runtime && runtime !== 0" class="base-content-runtime">{{ getConvertRuntime }}</div>
 </template>
 
 <script setup>

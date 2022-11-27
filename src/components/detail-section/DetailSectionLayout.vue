@@ -30,13 +30,14 @@ const props = defineProps({
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 1.875rem 1.5rem;
 
         background-color: $main-color;
         
-        @include for-size(tablet-up) {
+        @include for-size(laptop-up) {
             padding: 1.875rem 2.5rem;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
         }
     }
 
@@ -44,17 +45,20 @@ const props = defineProps({
         min-width: 300px;
         max-width: 300px;
         height: 450px;
-        margin-right: 2.5rem;
+        margin-bottom: 2rem;
 
         border-radius: $card-border-radius;
         overflow: hidden;
+        
+        @include for-size(laptop-up) {
+            margin: 0;
+            margin-right: 2.5rem;
+        }
     }
     
     &__content {
         flex-basis: 100%;
-
-        display: flex;
-        flex-direction: column;
+        align-self: stretch;
         width: 100%;
         min-height: 100%;
     }

@@ -3,6 +3,8 @@ import axios from "axios";
 import search from "./search/search";
 import movies from "./movies/movies";
 import tv from "./tv/tv";
+import person from "./person/person"
+import genres from "./genres/genres"
 
 const theMovieDb = {}
 
@@ -12,10 +14,10 @@ theMovieDb.common = {
     images_url: 'https://image.tmdb.org/t/p',
     language: 'en-US',
 
-    generateQuery: function(option) {
+    generateQuery: function (option) {
         'use strict';
         const myOptions = option || {};
-        let query; 
+        let query;
 
         query = "?api_key=" + theMovieDb.common.api_key + "&language=" + theMovieDb.common.language;
 
@@ -37,11 +39,11 @@ theMovieDb.common = {
         }
     },
 
-    validateRequired: function(args, argsReq, opt, optReq) {
+    validateRequired: function (args, argsReq, opt, optReq) {
         'use strict';
 
         const myOption = opt || null;
-        
+
         if (args.length < argsReq) {
             throw `The method requires ${argsReq} arguments and you are sending ${args.length}!`;
         }
@@ -55,16 +57,16 @@ theMovieDb.common = {
         }
     },
 
-    getImage: function(options) {
+    getImage: function (options) {
         'use strict';
         const defaultSize = 'w500';
 
         return `${theMovieDb.common.images_url}/${options.size || defaultSize}${options.file}`;
     },
 
-    client: async function(option, success, myError) {
+    client: async function (option, success, myError) {
         'use strict';
-        
+
         try {
             const response = await axios.get(theMovieDb.common.base_url + option.url);
             success(response.data);
@@ -85,5 +87,7 @@ theMovieDb.typeContent = {
 theMovieDb.search = search;
 theMovieDb.movies = movies;
 theMovieDb.tv = tv;
+theMovieDb.person = person;
+theMovieDb.genres = genres;
 
 export default theMovieDb;

@@ -61,6 +61,11 @@ getResults();
     &__wrapper {
         display: flex;
         flex-direction: column;
+        padding-top: 3.125rem;
+
+        @include for-size(laptop-up) {
+            padding: 0;
+        }
     }
 
     &__column {

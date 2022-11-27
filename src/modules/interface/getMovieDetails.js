@@ -11,7 +11,7 @@ export default async function getMovieDetails(option) {
         (error) => {
             throw error; 
         });
-
+    
     let {
         original_title: title,
         poster_path: posterPath,
@@ -24,6 +24,8 @@ export default async function getMovieDetails(option) {
         runtime,
         tagline } = response;
 
+    
+    genres = genres.map(genre => genre.name);
 
     return {
         id,

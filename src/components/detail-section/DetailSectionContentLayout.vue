@@ -1,9 +1,10 @@
 <template>
     <div class="detail-section-content-layout">
         <div class="detail-section-content-layout__wrapper">
-            <h3 class="detail-section-content-layout__title">
+            <h1 class="detail-section-content-layout__title">
                 <slot name="title"/>
-            </h3>
+            </h1>
+            <slot name="genres-list" />
             <div class="detail-section-content-layout__subtitle">
                 <div class="detail-section-content-layout__rating">
                     <slot name="rating"/>
@@ -35,6 +36,20 @@
 
 <style lang="scss" scoped>
 .detail-section-content-layout {
+    display: flex;
+    min-height: 100%;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        @include for-size(laptop-up) {
+            align-items: flex-start;
+        }
+    }
+
     &__title {
         margin-bottom: 0.3rem;
     }
@@ -53,12 +68,6 @@
         margin-bottom: 1rem;
 
         color: $font-subtitle-color;
-    }
-
-    @include for-size(laptop-up) {
-        &__title {
-            font-size: 2rem;
-        }
     }
 }
 </style>

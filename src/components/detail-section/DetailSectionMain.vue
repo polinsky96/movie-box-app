@@ -1,12 +1,14 @@
 <template>
-  <div class="detail-section-content-movie">
-      <DetailSectionLayout 
-        :poster-path="details.posterPath"
-        class="detail-section-content-movie__backdrop">
+  <div class="detail-section-content-main">
+      <DetailSectionLayout :poster-path="details.posterPath">
+
         <template #content>
           <DetailSectionContentLayout>
             <template #title>
                 <BaseContentTitle :title="details.title" />
+            </template>
+            <template #genres-list>
+                <BaseGenreList :genres-list="details.genres"/>
             </template>
             <template #rating>
                 <RatingBlock :rating="details.rating"/>
@@ -17,11 +19,11 @@
             <template #runtime>
                 <BaseContentRuntime :runtime="details.runtime"/>
             </template>
-            <template #tagline>
+            <template  #tagline>
                 {{ details.tagline }}
             </template>
             <template #overview>
-                {{ details.overview }}
+                <BaseTextBlock :text="details.overview" />
             </template>
           </DetailSectionContentLayout>
         </template>
@@ -34,6 +36,8 @@
 import BaseContentTitle from '../base/BaseContentTitle.vue';
 import BaseContentDate from '../base/BaseContentDate.vue';
 import BaseContentRuntime from '../base/BaseContentRuntime.vue';
+import BaseGenreList from '../base/BaseGenreList.vue';
+import BaseTextBlock from '../base/BaseTextBlock.vue';
 import RatingBlock from '../rating-block/RatingBlock.vue';
 
 import DetailSectionLayout from './DetailSectionLayout.vue';
@@ -50,7 +54,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-.detail-section-content-movie {
+.detail-section-content-main {
     position: relative;
     z-index: 1;
 }

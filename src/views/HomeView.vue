@@ -1,11 +1,16 @@
 <template>
   <div>
-    <SearchBox @set-request="getMovie"/>
+    <BaseContainer>
+      <SearchBox 
+        @set-request="getMovie"
+        placeholder="Find movie, tv or person"/>
+    </BaseContainer>
   </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
+import BaseContainer from '../components/base/BaseContainer.vue';
 
 import SearchBox from '../components/search-box/TheSearchBox.vue';
 
@@ -14,7 +19,6 @@ const router = useRouter();
 const getMovie = (request) => {
   router.push({ path: `/result/${request.value}` });
 }
-
 </script>
 
 <style lang="scss" scoped>

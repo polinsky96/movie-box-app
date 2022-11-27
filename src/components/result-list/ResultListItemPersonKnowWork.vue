@@ -40,7 +40,7 @@ const props = defineProps({
     &__item {
         margin-right: 5px;
 
-        @include overflow-text-for-columns(1);
+        @include overflow-text-for-rows(1);
     }
     
     &__link {

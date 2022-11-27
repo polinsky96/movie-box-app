@@ -17,14 +17,14 @@
     &__title {
         margin-bottom: 0.3125rem;
         
-        @include overflow-text-for-columns(1);
+        @include overflow-text-for-rows(1);
     }
 
     &__overview {
-        @include overflow-text-for-columns(3);
+        @include overflow-text-for-rows(3);
         
         @include for-size(phone-only) {
-            @include overflow-text-for-columns(2);
+            @include overflow-text-for-rows(2);
         }
     }
 

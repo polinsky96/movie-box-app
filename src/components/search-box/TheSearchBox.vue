@@ -22,7 +22,7 @@ import SearchIcon from '../../assets/icons/search-icon.svg';
 const props = defineProps({
     placeholder: {
         type: String,
-        default: 'Enter your request'
+        default: 'input here'
     },
 });
 

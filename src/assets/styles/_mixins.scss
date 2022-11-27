@@ -2,9 +2,9 @@
     border: 2px solid #6781F7;
 }
 
-@mixin overflow-text-for-columns ($columns) {
+@mixin overflow-text-for-rows ($rows) {
     display: -webkit-box;
-    -webkit-line-clamp: $columns;
+    -webkit-line-clamp: $rows;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis; 
@@ -19,4 +19,13 @@
 
 @mixin card-box-shadow {
     box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.5);
+}
+
+@mixin reset-style-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }

@@ -4,18 +4,18 @@ export default async function getPersonList(option) {
     let response;
 
     await theMovieDb.search.searchPerson(
-        option, 
+        option,
         (data) => {
             response = data
-        }, 
+        },
         (error) => {
-            throw error; 
+            throw error;
         });
 
-    let {total_pages: totalPages, page, results} = response;
+    let { total_pages: totalPages, page, results } = response;
 
-    results = results.map( result => {
-        const knownFor = result.known_for.map( item => {
+    results = results.map(result => {
+        const knownFor = result.known_for.map(item => {
             return {
                 id: item.id,
                 title: item.original_name || item.original_title,
