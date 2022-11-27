@@ -1,20 +1,15 @@
 <template>
   <header class="header-block">
-    <div class="header-block__logo-wrapper">
-      <div v-if="isMobile || isTablet" class="header-block__logo logo--mobile">
-        <p>MB</p>
-      </div>
-      <div v-else class="header-block__logo logo--desktop">
-        <p>MOVIE BOX</p>
-      </div>
+    <div class="header-block__logo">
+      <router-link to="/" class="header-block__logo-link">
+        <HeaderLogo />
+      </router-link>
     </div>
   </header>
 </template>
 
 <script setup>
-import { useTypeDevices } from '../../modules/useTypeDevice';
-
-const { isMobile, isTablet } = useTypeDevices();
+import HeaderLogo from './TheHeaderLogo.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -30,9 +25,8 @@ const { isMobile, isTablet } = useTypeDevices();
   transition: 0.3s ease all;
   transition-delay: 0.3s;
 
-  &__logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+  &__logo-link {
+    text-decoration: none;
   }
 }
 </style>

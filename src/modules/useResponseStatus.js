@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
-import { useErrorStatus } from '../stores/errorStatus';
-import { useLoaderStatus } from '../stores/loaderStatus';
+import { useErrorStatus } from '../components/error-page/errorStatus';
+import { useLoaderStatus } from '../components/loader-main/loaderStatus';
 
 export const useResponseStatus = () => {
   const storeError = useErrorStatus();
@@ -19,15 +19,16 @@ export const useResponseStatus = () => {
 
   const setResponseStatus = async (callback) => {
     requestState.value = requestStatus.progress;
-    storeLoader.setLoading();
+    storeLoader.setStatusProgress();
 
     try {
       await callback();
       
       requestState.value = requestStatus.success;
-      storeLoader.setSuccess();
+      storeLoader.setStatusLoaded();
     } catch(error) {
       requestState.value = requestStatus.error;
+      storeLoader.setStatusLoaded();
       storeError.setError(error.message || error);
     }
   }

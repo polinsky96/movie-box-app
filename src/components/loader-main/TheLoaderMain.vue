@@ -8,7 +8,7 @@
 
 <script setup>
 import LoaderAnimate from '../../assets/icons/loader-animate.svg'
-import { useLoaderStatus } from '../../stores/loaderStatus';
+import { useLoaderStatus } from './loaderStatus';
 
 const storeLoader = useLoaderStatus(); 
 </script>

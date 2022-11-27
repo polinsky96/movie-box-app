@@ -8,14 +8,28 @@
             <p class="error-page__message">
                 {{ store.textError }}
             </p>
+            <button
+                @click="goHomePage"
+                class="error-page__button">
+                Come back home page
+            </button>
         </div>
     </div>
 </template>
 
 <script setup>
-import { useErrorStatus } from '../../stores/errorStatus';
+import { useRouter } from 'vue-router';
+import { useErrorStatus } from './errorStatus';
 
 const store = useErrorStatus();  
+const router = useRouter()
+
+const goHomePage = () => {
+    store.removeError();
+    router.push({
+        name: 'home'
+    })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -47,9 +61,15 @@ const store = useErrorStatus();
     }
 
     &__message {
+        margin-bottom: 1rem;
+
         font-size: 1.5rem;
     }
 
-
+    &__button {
+        @include reset-style-button;
+        font-size: 1rem;
+        color: $accent-color;
+    }
 }
 </style>

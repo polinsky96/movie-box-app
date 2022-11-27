@@ -4,13 +4,13 @@ import { defineStore } from 'pinia';
 export const useLoaderStatus = defineStore('loadingStatus', () => {
   const status = ref(false);
 
-  function setLoading() {
+  function setStatusProgress() {
     status.value = true;
   }
 
-  function setSuccess() {
+  function setStatusLoaded() {
     status.value = false;
   }
 
-  return { status, setLoading, setSuccess }
+  return { status, setStatusProgress, setStatusLoaded }
 })

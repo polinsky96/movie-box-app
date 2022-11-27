@@ -10,5 +10,10 @@ export const useErrorStatus = defineStore('errorStatus', () => {
     textError.value = error;
   }
 
-  return { status, textError, setError }
+  function removeError() {
+    status.value = false;
+    textError.value = '';
+  }
+
+  return { status, textError, setError, removeError }
 })
