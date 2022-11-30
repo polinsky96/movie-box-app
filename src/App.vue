@@ -2,9 +2,7 @@
   <div class="app">
     <AppHeaderBlock />
     <div class="app__wrapper">
-      <!-- <Auth v-if="!store.state.user" />
-      <div v-else class="hello">hello</div>
-      <button @click="signOut">Sign Out</button> -->
+      <button v-if="store.isUser" @click="signOut">Sign Out</button>
       <RouterView />
       <ErrorPage />
       <LoaderMain />
@@ -13,31 +11,49 @@
 </template>
 
 <script setup>
-import ErrorPage from './components/error-page/TheErrorPage.vue';
+import { useRouter } from 'vue-router';
 import AppHeaderBlock from './components/header-block/TheAppHeaderBlock.vue';
 import LoaderMain from './components/loader-main/TheLoaderMain.vue'
-// import Auth from "./components/AuthView.vue";
+import ErrorPage from './components/error-page/TheErrorPage.vue';
 
-import { store } from "./store.js";
+import useAuthSupabase from './stores/authSupabase'
 import { supabase } from "./supabase.js";
 
 defineProps({
   msg: String,
 });
 
-store.state.user = supabase.auth.getUser();
-// we then set up a listener to update the store when the user changes either by logging in or out
+const store = useAuthSupabase();
+const router = useRouter();
+
 supabase.auth.onAuthStateChange((event, session) => {
   if (event == "SIGNED_OUT") {
-    store.state.user = null;
+    store.setUser(null);
   } else {
-    store.state.user = session.user;
+    store.setUser(session.user);
   }
 });
 
-// async function signOut() {
-//   const { error } = await supabase.auth.signOut();
-// }
+async function signOut() {
+  const { error } = await supabase.auth.signOut();
+}
+
+async function checkLoginUser() {
+  const user = await supabase.auth.getUser();
+
+  if (user.data.user) {
+    store.setUser(user);
+  }
+}
+
+checkLoginUser();
+
+router.beforeEach(async (to, from) => {
+  if (to.name == 'user') {
+    console.log('user are not login');
+    return false
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -52,5 +68,9 @@ supabase.auth.onAuthStateChange((event, session) => {
   @include for-size(laptop-up) {
     padding-top: 5.625rem;
   }
+}
+
+button {
+  color: black;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="search-result-view">
-        <BaseContainer>        
+        <BaseContainer>     
             <TypeContentList 
                 @set-type="switchTypeContent"
                 :content-types="contentTypes"/>
@@ -15,6 +15,9 @@
                         :total-pages="results.totalPages"/>
                 </div>
             </div>
+            <router-link :to="{ name: 'user', params: { id: 123 }}">
+                <button >Go to user</button>
+            </router-link>   
         </BaseContainer>
     </div>
 </template>
