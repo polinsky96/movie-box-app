@@ -43,7 +43,7 @@ const router = createRouter({
     },
 
     {
-      path: '/profile/:id',
+      path: '/profile/:id?',
       name: 'profile',
       component: ProfileView
     },
@@ -52,6 +52,9 @@ const router = createRouter({
       path: '/auth',
       name: 'auth',
       component: AuthView,
+      redirect: () => {
+        return { name: 'login' }
+      },
       children: [
         {
           path: 'register',

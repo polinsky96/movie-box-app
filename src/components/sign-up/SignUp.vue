@@ -45,6 +45,7 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import FormAuthentication from '../form-authentication/FormAuthentication.vue';
 import InputAuthentication from '../input-authentication/InputAuthentication.vue';
 
@@ -52,10 +53,12 @@ import { Form as VeeForm } from 'vee-validate';
 import { object, string, ref } from 'yup';
 import SignUp from '../../modules/supabase/SignUp';
 
+const router = useRouter();
+
 const schema = object({
     username: string().required().trim(),
     email: string().required().email(),
-    password: string().required().min(8).max(25),
+    password: string().min(8).max(25).required(),
     confirm_password: string()
         .required()
         .oneOf([ref('password')], 'Passwords do not match'),
@@ -63,10 +66,10 @@ const schema = object({
 
 const submitOn = async (values) => {
     try {
-        await SignUp(values.email, values.password);
-
+        await SignUp(values.email, values.password, values.username);
+        router.push({ name: 'auth' });
     } catch (error) {
-        console.log(error.message);
+        alert(error.message);
     }
 }
 </script>

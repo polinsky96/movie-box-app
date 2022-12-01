@@ -30,6 +30,7 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import FormAuthentication from '../form-authentication/FormAuthentication.vue';
 import InputAuthentication from '../input-authentication/InputAuthentication.vue';
 
@@ -37,18 +38,19 @@ import { Form as VeeForm } from 'vee-validate';
 import { object, string } from 'yup';
 import SignIn from '../../modules/supabase/SignIn';
 
+const router = useRouter();
+
 const schema = object({
-    username: string().required().trim(),
     email: string().required().email(),
-    password: string().required().min(8).max(25)
+    password: string().min(8).max(25).required()
 });
 
 const submitOn = async (values) => {
     try {
-        await SignIn(values.email, values.password);
-
+        const { data } = await SignIn(values.email, values.password);
+        router.push({ name: 'profile', params: { id: data.user.id } });
     } catch (error) {
-        console.log(error.message);
+        alert(error.message);
     }
 }
 </script>

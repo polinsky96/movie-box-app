@@ -8,11 +8,15 @@ const useAuthSupabase = defineStore('authSupabase', () => {
         user.value = session;
     }
 
-    const isUser = computed(() => {
+    const getUser = computed(() => {
         return user.value;
     })
 
-    return { setUser, isUser }
+    const isUser = computed(() => {
+        return user.value != null;
+    })
+
+    return { setUser, getUser, isUser }
 })
 
 export default useAuthSupabase;

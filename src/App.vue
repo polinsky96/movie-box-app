@@ -24,23 +24,28 @@ const router = useRouter();
 supabase.auth.onAuthStateChange((event, session) => {
   if (event == "SIGNED_OUT") {
     store.setUser(null);
-  } else {
-    store.setUser(session.user);
+    if (router.currentRoute.value.name === 'profile') {
+      router.push({ name: 'home' });
+    }
   }
+  
+  if (event == "SIGNED_IN") {
+    store.setUser(session.user);
+  } 
 });
 
 async function checkLoginUser() {
-  const user = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
 
-  if (user.data.user) {
-    store.setUser(user);
+  if (data.user) {
+    store.setUser(data.user);
   }
 }
 
 router.beforeEach(async (to, from) => {
-  if (to.name == 'profile') {
+  if (to.name === 'profile') {
     if (!store.isUser) {
-      return { path: 'auth/register' }
+      return { name: 'auth' }
     }
   }
 })
@@ -53,13 +58,15 @@ checkLoginUser();
   position: relative;
 
   min-height: 100vh;
-  padding-top: 4.375rem;
+  padding-top: 5.625rem;
   padding-bottom: 3.125rem;
   background-color: $bg-color;
 
-  @include for-size(laptop-up) {
-    padding-top: 5.625rem;
-  }
+
+  //FIXME: added padding for mobile version
+  // @include for-size(laptop-up) {
+  //   padding-top: 5.625rem;
+  // }
 }
 
 button {

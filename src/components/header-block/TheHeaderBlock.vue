@@ -5,21 +5,21 @@
         <HeaderLogo />
       </router-link>
     </div>
-    <router-link :to="{ name: 'profile', params: { id: 123 }}">
-      <button>Profile</button>
-    </router-link>
-    <button @click="signOut">Sign Out</button>
+    <nav class="header-block__navigation">
+      <ButtonProfile />
+      <ButtonSignOut v-show="store.isUser"/>
+    </nav>
   </header>
 </template>
 
 <script setup>
 import HeaderLogo from './TheHeaderLogo.vue';
-import { supabase } from "../../supabase";
+import ButtonProfile from '../button-profile/ButtonProfile.vue';
+import ButtonSignOut from '../button-sign-out/ButtonSignOut.vue';
 
-async function signOut() {
-  console.log('log out');
-  const { error } = await supabase.auth.signOut();
-}
+import useAuthSupabase from '../../stores/authSupabase';
+
+const store = useAuthSupabase();
 </script>
 
 <style lang="scss" scoped>
@@ -39,9 +39,10 @@ async function signOut() {
   &__logo-link {
     text-decoration: none;
   }
-}
 
-button {
-  color: black;
+  &__navigation {
+    display: flex;
+    gap: 1.5rem;
+  }
 }
 </style>
