@@ -2,7 +2,6 @@
   <div class="app">
     <AppHeaderBlock />
     <div class="app__wrapper">
-      <button v-if="store.isUser" @click="signOut">Sign Out</button>
       <RouterView />
       <ErrorPage />
       <LoaderMain />
@@ -19,10 +18,6 @@ import ErrorPage from './components/error-page/TheErrorPage.vue';
 import useAuthSupabase from './stores/authSupabase'
 import { supabase } from "./supabase.js";
 
-defineProps({
-  msg: String,
-});
-
 const store = useAuthSupabase();
 const router = useRouter();
 
@@ -34,10 +29,6 @@ supabase.auth.onAuthStateChange((event, session) => {
   }
 });
 
-async function signOut() {
-  const { error } = await supabase.auth.signOut();
-}
-
 async function checkLoginUser() {
   const user = await supabase.auth.getUser();
 
@@ -46,14 +37,15 @@ async function checkLoginUser() {
   }
 }
 
-checkLoginUser();
-
 router.beforeEach(async (to, from) => {
-  if (to.name == 'user') {
-    console.log('user are not login');
-    return false
+  if (to.name == 'profile') {
+    if (!store.isUser) {
+      return { name: 'auth' }
+    }
   }
 })
+
+checkLoginUser();
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,7 @@
 <template>
-  <div>This is user-view</div>
+  <div class="profile-view">
+    This is profile view
+  </div>
 </template>
 
 <script>

@@ -4,7 +4,8 @@ import SearchResultView from '../views/SearchResultView.vue';
 import MovieView from '../views/MovieView.vue';
 import TvView from '../views/TvView.vue';
 import PersonView from '../views/PersonView.vue';
-import UserView from '../views/UserView.vue';
+import ProfileView from '../views/ProfileView.vue';
+import AuthView from '../views/AuthView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,9 +41,15 @@ const router = createRouter({
     },
 
     {
-      path: '/user/:id',
-      name: 'user',
-      component: UserView
+      path: '/profile/:id',
+      name: 'profile',
+      component: ProfileView
+    },
+
+    {
+      path: '/auth',
+      name: 'auth',
+      component: AuthView
     },
   ]
 })

@@ -7,11 +7,11 @@
         <div class="form-authentication__inputs">
           <slot name="inputs" />
         </div>
-          <button 
-            type="submit"
-            class="form-authentication__button">
-              <slot name="button-text">Submit</slot>
-          </button>
+        <button 
+          type="submit"
+          class="form-authentication__button">
+            <slot name="button-text">Submit</slot>
+        </button>
       </form>
     </div>
   </div>

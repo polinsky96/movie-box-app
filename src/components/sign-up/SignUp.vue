@@ -1,65 +1,92 @@
 <template>
-  <div class="sign-up">
-    <h3 class="sign-up__title">Sign up for an account</h3>
-    <FormAuthentication @update-submit="handleSignUp">
-      <template #inputs>
-        <InputAuthentication
-          v-model="username" 
-          type="text"
-          id="username"
-          label="Username"
-          placeholder="Enter username"
-          class="sign-up__input"/>
-        <InputAuthentication
-          v-model="email" 
-          type="text"
-          id="email"
-          label="Email"
-          placeholder="Enter email"
-          class="sign-up__input"/>
-        <InputAuthentication
-          v-model="password" 
-          type="password"
-          id="passsword"
-          label="Passsword"
-          placeholder="Enter passsword"
-          class="sign-up__input"/>
-      </template>
-    </FormAuthentication>
-  </div>
+    <div class="sign-up">
+        <h3 class="sign-up__title">Create account</h3>
+        <VeeForm
+          v-slot="{ handleSubmit }"
+          :validation-schema="schema"
+          as="div">
+            <FormAuthentication @submit="handleSubmit($event, submitOn)">
+                <template #inputs>
+
+                    <InputAuthentication
+                      name="username"
+                      type="text"
+                      label="Username"
+                      placeholder="Your username"
+                      class="sign-up__input"/>
+                    
+
+                    <InputAuthentication
+                      name="email"
+                      type="text"
+                      label="Email"
+                      placeholder="Your Email"
+                      class="sign-up__input"/>
+
+                    <InputAuthentication
+                      name="password"
+                      type="password"
+                      label="Password"
+                      placeholder="At least 8 characters"
+                      class="sign-up__input"/>
+
+                    <InputAuthentication
+                      name="confirm_password"
+                      type="password"
+                      label="Confirm Password"
+                      placeholder="Type password again"
+                      class="sign-up__input"/>
+
+                </template>
+                <template #button-text>Submit</template>
+            </FormAuthentication>
+        </VeeForm>
+    </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import InputAuthentication from '../input-authentication/InputAuthentication.vue';
 import FormAuthentication from '../form-authentication/FormAuthentication.vue';
-import SignUp from "../modules/supabase/SignUp"
+import InputAuthentication from '../input-authentication/InputAuthentication.vue';
 
-const username = ref('');
-const email = ref('');
-const password = ref('');
+import { Form as VeeForm } from 'vee-validate';
+import { object, string, ref } from 'yup';
+import SignUp from '../../modules/supabase/SignUp';
 
-const handleSignUp = () => {
-    SignUp(email.value, password.value)
+const schema = object({
+    username: string().required().trim(),
+    email: string().required().email(),
+    password: string().required().min(8).max(25),
+    confirm_password: string()
+        .required()
+        .oneOf([ref('password')], 'Passwords do not match'),
+});
+
+const submitOn = async (values) => {
+    try {
+        await SignUp(values.email, values.password);
+
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .sign-up {
-  min-width: 300px;
-  max-width: 350px;
-  padding: 1.25rem 0.625rem;
+    min-width: 320px;
+    max-width: 380px;
+    padding: 1.25rem 0.625rem;
 
-  @include card-frame;
+    @include card-frame;
 
-  &__title {
-    margin-bottom: 1rem;
+    &__title {
+        margin-bottom: 1rem;
 
-    text-align: center;
-  }
+        text-align: center;
+    }
 
-  &__input {
-    margin-bottom: 1rem;
-  }
+    &__input {
+        margin-bottom: calc(1rem * 1.7);
+    }
 }
 </style>
