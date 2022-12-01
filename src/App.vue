@@ -40,7 +40,7 @@ async function checkLoginUser() {
 router.beforeEach(async (to, from) => {
   if (to.name == 'profile') {
     if (!store.isUser) {
-      return { name: 'auth' }
+      return { path: 'auth/register' }
     }
   }
 })

@@ -83,7 +83,7 @@ $success-bg-color: #e0eee4;
 
     &__input {
         width: 100%;
-        padding: 0.625rem 0.625rem;
+        padding: 0.3125rem 0.625rem;
         
         color: $font-dark-color;
 

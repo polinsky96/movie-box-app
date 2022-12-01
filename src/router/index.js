@@ -6,6 +6,8 @@ import TvView from '../views/TvView.vue';
 import PersonView from '../views/PersonView.vue';
 import ProfileView from '../views/ProfileView.vue';
 import AuthView from '../views/AuthView.vue';
+import SignUp from '../components/sign-up/SignUp.vue';
+import SignIn from '../components/sign-in/SignIn.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +35,7 @@ const router = createRouter({
       name: 'tv',
       component: TvView
     },
-    
+
     {
       path: '/person/:id',
       name: 'person',
@@ -49,7 +51,20 @@ const router = createRouter({
     {
       path: '/auth',
       name: 'auth',
-      component: AuthView
+      component: AuthView,
+      children: [
+        {
+          path: 'register',
+          name: 'register',
+          component: SignUp
+        },
+
+        {
+          path: 'login',
+          name: 'login',
+          component: SignIn
+        }
+      ]
     },
   ]
 })

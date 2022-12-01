@@ -73,15 +73,14 @@ const submitOn = async (values) => {
 
 <style lang="scss" scoped>
 .sign-up {
-    min-width: 320px;
-    max-width: 380px;
+    width: 100%;
+    min-width: 275px;
+    max-width: 350px;
     padding: 1.25rem 0.625rem;
 
     @include card-frame;
 
     &__title {
-        margin-bottom: 1rem;
-
         text-align: center;
     }
 
